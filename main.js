@@ -1,10 +1,8 @@
-let dataAtual = new Date();
-let mesAtual = dataAtual.getMonth();
-let diaAtual = dataAtual.getDate();
-let dataNat = new Date("2024-08-15");
-let dataDiferenca = dataNat - dataAtual;
 
-function calculaTempo(tempo){
+let dataNat = new Date("2024-08-15");
+function calculaTempo(){
+    let dataAtual = new Date();
+    let tempo = dataNat - dataAtual;
     var totalSegundos = Math.floor(tempo/1000);
     var horas = Math.floor(totalSegundos/3600);
     totalSegundos %= 3600;
@@ -19,4 +17,4 @@ function calculaTempo(tempo){
     console.log(`${meses} meses, ${dias} dias, ${horas} horas, ${minutos} minutos, ${segundos} segundos`)
 }
 
-setInterval(() => {calculaTempo(dataDiferenca)}, 1000);
+setInterval(() => {calculaTempo()}, 1000);
