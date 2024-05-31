@@ -1,20 +1,22 @@
-
 let dataAtual = new Date();
 let mesAtual = dataAtual.getMonth();
 let diaAtual = dataAtual.getDate();
 let dataNat = new Date("2024-08-15");
-let mesNat = dataNat.getMonth();
-let diaNat = dataNat.getDate();
+let dataDiferenca = dataNat - dataAtual;
 
-function atualizaTela(){
-    if(mesNat - mesAtual > 1){
-    document.querySelector(".meses").innerText = `${mesNat - mesAtual} meses e`
-    } else {
-        document.querySelector(".meses").innerText = `${mesNat - mesAtual} mes e`
-    }
-
-    if(diaAtual < diaNat){
-        document.querySelector(".dias").innerText = `${diaNat - diaAtual} dias`
-    } else {document.querySelector(".dias").innerText = `${diaAtual - diaNat} dias`}
+function calculaTempo(tempo){
+    var totalSegundos = Math.floor(tempo/1000);
+    var horas = Math.floor(totalSegundos/3600);
+    totalSegundos %= 3600;
+    var minutos = Math.floor(totalSegundos/60);
+    var segundos = totalSegundos % 60;
+    
+    var dias =Math.floor(horas/24);
+    horas %= 24;
+    var meses = Math.floor(dias/30); 
+    dias %= 30;
+    
+    console.log(`${meses} meses, ${dias} dias, ${horas} horas, ${minutos} minutos, ${segundos} segundos`)
 }
-atualizaTela();
+
+setInterval(() => {calculaTempo(dataDiferenca)}, 1000);
